@@ -12,6 +12,13 @@ public class CustomServiceCollection
             ServiceLifetime.Transient));
 
     }
+    public void AddSingleton<TService, TImplementation>()
+    {
+        _serviceDescriptors.Add(new ServiceDescriptor(
+            typeof(TService),
+            typeof(TImplementation),
+            ServiceLifetime.Singleton));
+    }
     public ServiceProvider BuildServiceProvider()
     {
         return new ServiceProvider(_serviceDescriptors.AsReadOnly());
