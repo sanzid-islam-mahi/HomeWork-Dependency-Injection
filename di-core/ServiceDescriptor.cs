@@ -1,6 +1,7 @@
-namespace homework_dependancy_injection.DependencyInjection;
+namespace homework_dependancy_injection.di_core;
 
-using homework_dependancy_injection.enums;
+using enums;
+
 public class ServiceDescriptor
 {
     public Type ServiceType { get; }
