@@ -2,15 +2,9 @@ namespace homework_dependancy_injection.di_core;
 
 using enums;
 
-public class ServiceProvider
+public class ServiceProvider(IReadOnlyList<ServiceDescriptor> serviceDescriptors)
 {
-    private readonly IReadOnlyList<ServiceDescriptor> _serviceDescriptors;
     private readonly Dictionary<Type, object> _singletonInstances = [];
-
-    public ServiceProvider(IReadOnlyList<ServiceDescriptor> serviceDescriptors)
-    {
-        _serviceDescriptors = serviceDescriptors;
-    }
 
     public T GetRequiredService<T>()
     {
@@ -19,7 +13,7 @@ public class ServiceProvider
 
     public object GetService(Type serviceType)
     {
-        var descriptor = _serviceDescriptors.FirstOrDefault(x => x.ServiceType == serviceType) ??
+        var descriptor = serviceDescriptors.FirstOrDefault(x => x.ServiceType == serviceType) ??
                          throw new Exception($"Service of type {serviceType.Name} not registered");
 
         return descriptor.Lifetime switch
