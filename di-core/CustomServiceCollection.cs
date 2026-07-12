@@ -1,5 +1,6 @@
-namespace homework_dependancy_injection;
+namespace homework_dependancy_injection.DependencyInjection;
 
+using homework_dependancy_injection.enums;
 public class CustomServiceCollection
 {
     private readonly List<ServiceDescriptor> _serviceDescriptors = [];

@@ -1,12 +1,6 @@
-namespace homework_dependancy_injection;
+namespace homework_dependancy_injection.DependencyInjection;
 
-public enum ServiceLifetime
-{
-    Singleton,
-    Transient,
-    Scoped
-}
-
+using homework_dependancy_injection.enums;
 public class ServiceDescriptor
 {
     public Type ServiceType { get; }
